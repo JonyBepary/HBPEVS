@@ -7,7 +7,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/JonyBepary/HBPEVS)
 ![GitHub forks](https://img.shields.io/github/forks/JonyBepary/HBPEVS)
 
-<img src="https://your-icon-url.com/icon.png" alt="HBPEVS Icon" width="100"/>
+<img src="https://github.com/JonyBepary/HBPEVS/raw/main/banner.png" width="1280"/>
 
 ## Overview
 
