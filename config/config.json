@@ -1,0 +1,29 @@
+{
+  "Polling_officer": {
+    "name": "Shafik Khan",
+    "id": "12345",
+    "polling_station": "nawdoba_word_02",
+    "po_aea": "ECDSA",
+    "po_aea_bit_size": "384",
+    "po_proof_of_authentication": ""
+  },
+  "Returning_officer": {
+    "name": "Swarowar kabir",
+    "id": "23456",
+    "ro_area": "shariatpur-1",
+    "ro_public_key": "",
+    "ro_aea": "ECDSA",
+    "ro_aea_bit_size": "384",
+    "ro_proof_of_authentication": ""
+  },
+  "ElectionCommission": {
+    "ec_public_key": "",
+    "ec_aea": "ECDSA",
+    "ec_aea_bit_size": "384"
+  },
+  "candidate": {
+    "applicable_candidate": ["006", "007", "013", "008", "009"],
+    "Digest": "",
+    "Signature": ""
+  }
+}
