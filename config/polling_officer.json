@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Mamun",
+    "id": "PO123",
+    "polling_station": "8010",
+    "asymetric key structure": {
+      "public_key": "",
+      "private_key": "",
+      "encryption_algorithm": "",
+      "KeySize": 0,
+      "SigSize": 0
+    },
+    "digest": "",
+    "signature": ""
+  },
+  {
+    "name": "Sandip",
+    "id": "PO456",
+    "polling_station": "8030",
+    "asymetric key structure": {
+      "public_key": "",
+      "private_key": "",
+      "encryption_algorithm": "",
+      "KeySize": 0,
+      "SigSize": 0
+    },
+    "digest": "",
+    "signature": ""
+  },
+  {
+    "name": "Bakhtiar",
+    "id": "PO789",
+    "polling_station": "8050",
+    "asymetric key structure": {
+      "public_key": "",
+      "private_key": "",
+      "encryption_algorithm": "",
+      "KeySize": 0,
+      "SigSize": 0
+    },
+    "digest": "",
+    "signature": ""
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "Command": [
+    {
+      "authorizeBy": "RO23456",
+      "Action": "ASSIGN",
+      "Entity": ""
+    },
+    {
+      "authorizeBy": "RO23456",
+      "Action": "ASSIGN",
+      "Entity": ""
+    }
+  ],
+  "Digest": ["", ""],
+  "ProofOfCommand": ["", ""]
+}
