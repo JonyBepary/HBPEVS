@@ -1,0 +1,186 @@
+syntax = "proto3";
+
+package blockchain;
+
+// option nullable = false;
+option go_package =  "blockchain";
+
+message BlockHeader {
+  uint64 blockID = 1;
+  uint64 electionID = 2;
+  string pscode = 3;
+  int64 timestamp = 4;
+  string pre_hash = 5;
+  string post_hash = 6;
+  string ProofOfBlock = 7;
+}
+
+message CandidateStruct {
+  repeated string ApplicableCandidates = 1;
+  string digest = 2;
+  string signature = 3;
+}
+
+message VoterStruct {
+  repeated string voters = 1;
+  string pscode = 2;
+  string seed = 3;
+  string digest = 4;
+  string signature = 5;
+}
+
+message AKS {
+  string public_key = 1;
+  string private_key = 2;
+  string EncryptionAlgorithm = 3;
+  int64 KeySize = 4;
+  int64 SigSize = 5;
+}
+
+message ElectionCommission {
+  string public_key = 1;
+  string private_key = 2;
+  string ec_EncryptionAlgorithm = 3;
+  int64 KeySize = 4;
+  int64 SigSize = 5;
+  string digest = 6;
+}
+
+message PollingOfficer {
+  string name = 1;
+  string id = 2;
+  string polling_station = 3;
+  AKS keys = 4;
+  string digest = 5;
+  string signature = 6;
+}
+
+message ReturningOfficer {
+  string name = 1;
+  string id = 2;
+  repeated string r_area = 3;
+  AKS keys = 4;
+  string digest = 5;
+  string signature = 6;
+}
+
+
+message Command {
+  string authorizeBy = 1;
+  string Action = 2;
+  string Entity = 3;
+}
+
+message Digest {
+  string digest = 1;
+}
+
+message ProofOfCommand {
+  string proofOfCommand = 1;
+}
+
+message ContractStruct {
+  repeated Command command = 1;
+  repeated Digest digest = 2;
+  repeated ProofOfCommand proofOfCommand = 3;
+}
+
+
+message PoBannedList {
+  repeated string po_hash = 1;
+  repeated string po_poa = 2;
+}
+
+message ElectionTime {
+  string start = 1;
+  string duration = 2;
+  string digest = 3;
+  string ETproof = 4;
+}
+
+message spendedToken {
+  string token = 1;
+  string digest = 2;
+  string tokenProof = 3;
+}
+
+message Block {
+  BlockHeader Header = 1;
+  ElectionTime ElectionTime = 2;
+  CandidateStruct CandidateStruct = 3;
+  VoterStruct VoterStruct = 4;
+  ElectionCommission ElectionCommission = 5;
+  repeated PollingOfficer PollingOfficer = 6;
+  repeated ReturningOfficer ReturningOfficer =  7;
+  ContractStruct ContractStruct =   8;
+  PoBannedList PoBannedList =  9;
+  spendedToken spendedToken  =  10;
+  string Token =  11;
+  string Vote =  12;
+}
+
+message LiteBlock {
+  BlockHeader Header = 1;
+  string ElectionTime = 2;
+  string CandidateStruct = 3;
+  string VoterStruct = 4;
+  string ElectionCommission =  5;
+  repeated string PollingOfficer =  6;
+  repeated string ReturningOfficer = 7;
+  string ContractStruct = 8;
+  string PoBannedList =  9;
+  string spendedToken  = 10;
+  string Token = 11;
+  string Vote = 12;
+}
+
+message BlockChain {
+  repeated Block block = 1;
+
+}
+message BinaryData{
+  repeated bytes ContractProofOfCommand = 1;
+  bytes ETproof = 2;
+  bytes CandidateSignature = 3;
+  bytes VotersSignature = 4;
+  repeated bytes ReturningOfficerSignature = 5;
+  repeated bytes PollingOfficerSignature = 6;
+  repeated bytes PoBannedList = 7;
+
+}
+
+// designed to be shared between all app protocols
+message MessageData {
+  // shared between all requests
+  string clientVersion = 1; // client version
+  LiteBlock liteblock = 2;
+  Block block = 3;
+  bytes ProofOfBlock = 4;
+  BinaryData binarydata = 5;
+  string id = 6;           // allows requesters to use request data when processing a response
+  string nodeId = 7;       // id of node that created the message (not the peer that may have sent it). =base58(multihash(nodePubKey))
+  bytes nodePubKey = 8;    // Authoring node Secp256k1 public key (32bytes) - protobufs serielized
+  bytes sign = 9;         // signature of message data + method specific data by message authoring node.
+  bool gossip = 10;         // true to have receiver peer gossip the message to neighbors
+}
+
+
+
+// a protocol define a set of reuqest and responses
+message BlockRequest {
+    MessageData messageData = 1;
+
+    // method specific data
+    string message = 2;
+
+    // add any additional message data here....
+}
+
+message BlockResponse {
+    MessageData messageData = 1;
+
+    // response specific data
+    string message = 2;
+}
+// protoc internal/blockchain/block.proto --go_out=./
+// protoc internal/blockchain/block_structure.proto --go_out=./
